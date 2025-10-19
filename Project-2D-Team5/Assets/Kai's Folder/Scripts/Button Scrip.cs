@@ -16,6 +16,7 @@ public class ButtonScrip : MonoBehaviour
 
     [Header("Pause Menu Buttons")]
     public Button resumeButton;
+    public Button restartButton;
     public Button mainMenuButton;
 
     [Header("Help Menu Buttons")]
@@ -39,6 +40,9 @@ public class ButtonScrip : MonoBehaviour
 
         if (resumeButton != null)
             resumeButton.onClick.AddListener(ResumeGame);
+
+        if (restartButton != null)
+            restartButton.onClick.AddListener(RestartLevel);
 
         if (mainMenuButton != null)
             mainMenuButton.onClick.AddListener(ReturnToMainMenu);
@@ -118,5 +122,11 @@ public class ButtonScrip : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
