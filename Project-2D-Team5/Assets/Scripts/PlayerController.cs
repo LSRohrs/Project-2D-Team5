@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -47,9 +48,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Hazard")
             grounded = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D key)
+    {
+        if (key.gameObject.tag == "Key")
+           SceneManager.LoadScene("Level Two");
+    }
+
 
     public bool canAttack()
     {

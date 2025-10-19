@@ -1,26 +1,70 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float startingHealth;
-    private float currentHealth;
+    void sceneOver()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    public int startingHealth = 3;
+    public GameObject heartOne;
+    public GameObject heartTwo;
+    public GameObject heartThree;
+    public AudioClip playerhurtSFX;
+
+    private AudioSource audioSource;
+    private int currentHealth;
+
+    public float iFrameDuration = 1f; 
+    private bool isInvincible = false;
 
     private void Awake()
     {
         currentHealth = startingHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
-    public void enemyDamage(float _damage)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        if (other.CompareTag("Hazard") && !isInvincible)
+        {
+            TakeDamage(1);
+        }
+    }
 
-        if (currentHealth > 0)
+    private void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 2)
+            heartThree.SetActive(false);
+        audioSource.clip = playerhurtSFX;
+        audioSource.Play();
+
+        if (currentHealth <= 1)
+            heartTwo.SetActive(false);
+        audioSource.clip = playerhurtSFX;
+        audioSource.Play();
+
+        if (currentHealth <= 0)
         {
-            //player damaged
+            heartOne.SetActive(false);
+            audioSource.clip = playerhurtSFX;
+            audioSource.Play();
+            Debug.Log("Player died!");
+            Invoke("sceneOver", 2);
         }
-        else
-        {
-            //player dead
-        }
+
+        StartCoroutine(IFrames());
+    }
+
+    private System.Collections.IEnumerator IFrames()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(iFrameDuration);
+        isInvincible = false;
     }
 }

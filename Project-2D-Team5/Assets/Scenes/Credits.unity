@@ -706,7 +706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Liam: Level Design, Scrips, Audio'
+  m_text: 'Liam: Level Design, Scripts, Audio'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.5
+  m_fontSize: 51.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -900,6 +900,7 @@ MonoBehaviour:
   creditsButton: {fileID: 0}
   quitButton: {fileID: 0}
   resumeButton: {fileID: 0}
+  restartButton: {fileID: 0}
   mainMenuButton: {fileID: 870529670}
   backButton: {fileID: 0}
 --- !u!4 &1232835932
