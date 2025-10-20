@@ -55,7 +55,19 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D key)
     {
         if (key.gameObject.tag == "Key")
-           SceneManager.LoadScene("Level Two");
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+
+            if (currentScene == "Level One")
+            {
+                SceneManager.LoadScene("Level Two");
+            }
+            else if (currentScene == "Level Two")
+            {
+                SceneManager.LoadScene("Win");
+            }
+        }
+
     }
 
 
