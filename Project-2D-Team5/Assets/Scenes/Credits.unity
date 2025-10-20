@@ -547,8 +547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000025034, y: 130}
-  m_SizeDelta: {x: 784.903, y: 97.9853}
+  m_AnchoredPosition: {x: 0, y: 130}
+  m_SizeDelta: {x: 784.9031, y: 97.98529}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875342778
 MonoBehaviour:
@@ -683,8 +683,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000025034, y: -87}
-  m_SizeDelta: {x: 784.903, y: 97.9853}
+  m_AnchoredPosition: {x: 0, y: -87}
+  m_SizeDelta: {x: 784.9031, y: 97.98529}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009393162
 MonoBehaviour:
@@ -895,6 +895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helpPanel: {fileID: 0}
   pausePanel: {fileID: 0}
+  losePanel: {fileID: 0}
   playButton: {fileID: 0}
   helpButton: {fileID: 0}
   creditsButton: {fileID: 0}
@@ -904,6 +905,9 @@ MonoBehaviour:
   mainMenuButton: {fileID: 0}
   backButton: {fileID: 0}
   sceneBackButton: {fileID: 870529670}
+  retryButton: {fileID: 0}
+  loseHelpButton: {fileID: 0}
+  menuReturnButton: {fileID: 0}
 --- !u!4 &1232835932
 Transform:
   m_ObjectHideFlags: 0
@@ -1057,10 +1061,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1368748559}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1913069356
 MonoBehaviour:
