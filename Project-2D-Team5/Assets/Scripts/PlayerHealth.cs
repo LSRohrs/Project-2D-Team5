@@ -3,11 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    void sceneOver()
-    {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
-    }
+    //-----------------------------------------------------------------------------------------------------------------------------\/
+    //Edited by Kai
+    //void sceneOver()
+    //{
+    //    string currentSceneName = SceneManager.GetActiveScene().name;
+    //    SceneManager.LoadScene(currentSceneName);
+    //}
+    //-----------------------------------------------------------------------------------------------------------------------------/\
 
     public int startingHealth = 3;
     public GameObject heartOne;
@@ -21,19 +24,61 @@ public class PlayerHealth : MonoBehaviour
     public float iFrameDuration = 1f; 
     private bool isInvincible = false;
 
+    //-----------------------------------------------------------------------------------------------------------------------------\/
+    //Added by Kai
+    public float damageInterval = 1f;
+    private float damageTimer = 0f;
+    private bool touchingHazard = false;
+
+    private void Update()
+    {
+        if (touchingHazard && !isInvincible)
+        {
+            damageTimer += Time.deltaTime;
+
+            if (damageTimer >= damageInterval)
+            {
+                TakeDamage(1);
+                damageTimer = 0f;
+            }
+        }
+    }
+    //-----------------------------------------------------------------------------------------------------------------------------/\
+
     private void Awake()
     {
         currentHealth = startingHealth;
         audioSource = GetComponent<AudioSource>();
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------\/
+    //Added by Kai
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Hazard") && !isInvincible)
+        //-------------------------------------------------------------------------------------------------------------------------||
+        //Edited by Kai
+        //if (other.CompareTag("Hazard") && !isInvincible)
+        //{
+        //    TakeDamage(1);
+        //}
+        //-------------------------------------------------------------------------------------------------------------------------||
+
+        if (other.CompareTag("Hazard"))
         {
-            TakeDamage(1);
+            touchingHazard = true;
+            damageTimer = damageInterval;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Hazard"))
+        {
+            touchingHazard = false;
+            damageTimer = 0f;
+        }
+    }
+    //-----------------------------------------------------------------------------------------------------------------------------/\
 
     private void TakeDamage(int amount)
     {
@@ -55,7 +100,15 @@ public class PlayerHealth : MonoBehaviour
             audioSource.clip = playerhurtSFX;
             audioSource.Play();
             Debug.Log("Player died!");
-            Invoke("sceneOver", 2);
+            //----------------------------------------------------------------------------------------------------------------------\/
+            //Edited by Kai
+            //Invoke("sceneOver", 2);
+            //----------------------------------------------------------------------------------------------------------------------||
+            //added by Kai
+            Time.timeScale = 0f;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1f;
+            //----------------------------------------------------------------------------------------------------------------------/\
         }
 
         StartCoroutine(IFrames());
