@@ -901,8 +901,9 @@ MonoBehaviour:
   quitButton: {fileID: 0}
   resumeButton: {fileID: 0}
   restartButton: {fileID: 0}
-  mainMenuButton: {fileID: 870529670}
+  mainMenuButton: {fileID: 0}
   backButton: {fileID: 0}
+  sceneBackButton: {fileID: 870529670}
 --- !u!4 &1232835932
 Transform:
   m_ObjectHideFlags: 0
