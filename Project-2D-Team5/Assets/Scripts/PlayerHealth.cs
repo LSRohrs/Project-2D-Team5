@@ -11,6 +11,11 @@ public class PlayerHealth : MonoBehaviour
     //    SceneManager.LoadScene(currentSceneName);
     //}
     //-----------------------------------------------------------------------------------------------------------------------------/\
+    //-----------------------------------------------------------------------------------------------------------------------------\/
+    //Added by Kai
+    [Header("UI Panels")]
+    public GameObject losePanel;
+    //-----------------------------------------------------------------------------------------------------------------------------/\
 
     public int startingHealth = 3;
     public GameObject heartOne;
@@ -106,8 +111,8 @@ public class PlayerHealth : MonoBehaviour
             //----------------------------------------------------------------------------------------------------------------------||
             //added by Kai
             Time.timeScale = 0f;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            Time.timeScale = 1f;
+            if (losePanel != null)
+                losePanel.SetActive(true);
             //----------------------------------------------------------------------------------------------------------------------/\
         }
 

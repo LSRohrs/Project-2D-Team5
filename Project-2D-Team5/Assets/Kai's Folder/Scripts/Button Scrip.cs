@@ -7,6 +7,7 @@ public class ButtonScrip : MonoBehaviour
     [Header("UI Panels")]
     public GameObject helpPanel;
     public GameObject pausePanel;
+    public GameObject losePanel;
 
     [Header("Main Menu Buttons")]
     public Button playButton;
@@ -22,7 +23,17 @@ public class ButtonScrip : MonoBehaviour
     [Header("Help Menu Buttons")]
     public Button backButton;
 
+    [Header("Credits Buttons")]
+    public Button sceneBackButton;
+
+    [Header("Lose Buttons")]
+    public Button retryButton;
+    public Button loseHelpButton;
+    public Button menuReturnButton;
+
     private bool isPaused = false;
+
+    public static string lastSceneName = "";
 
     void Start()
     {
@@ -50,10 +61,24 @@ public class ButtonScrip : MonoBehaviour
         if (backButton != null)
             backButton.onClick.AddListener(CloseHelpPanel);
 
+        if (sceneBackButton != null)
+            sceneBackButton.onClick.AddListener(ReturnToPreviousScene);
+
+        if (retryButton != null)
+            retryButton.onClick.AddListener(RetryLevel);
+
+        if (loseHelpButton != null)
+            loseHelpButton.onClick.AddListener(OpenHelpPanel);
+
+        if (menuReturnButton != null)
+            menuReturnButton.onClick.AddListener(ReturnToMainMenu);
+
         if (helpPanel != null)
             helpPanel.SetActive(false);
         if (pausePanel != null)
             pausePanel.SetActive(false);
+        if (losePanel != null)
+            losePanel.SetActive(false);
     }
 
     void Update()
@@ -127,6 +152,36 @@ public class ButtonScrip : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void StoreLastScene()
+    {
+        lastSceneName = SceneManager.GetActiveScene().name;
+    }
+
+    public void ReturnToPreviousScene()
+    {
+        if (!string.IsNullOrEmpty(lastSceneName))
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(lastSceneName);
+        }
+        else
+        {
+            Debug.LogWarning("No scene stored");
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
+
+    public void RetryLevel()
+    {
+        Debug.Log("Retrying level...");
+        Time.timeScale = 1f;
+
+        if (losePanel != null)
+            losePanel.SetActive(false);
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
