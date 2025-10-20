@@ -1031,6 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helpPanel: {fileID: 0}
   pausePanel: {fileID: 0}
+  losePanel: {fileID: 0}
   playButton: {fileID: 671196139}
   helpButton: {fileID: 0}
   creditsButton: {fileID: 231149686}
@@ -1040,6 +1041,9 @@ MonoBehaviour:
   mainMenuButton: {fileID: 122050129}
   backButton: {fileID: 0}
   sceneBackButton: {fileID: 0}
+  retryButton: {fileID: 0}
+  loseHelpButton: {fileID: 0}
+  menuReturnButton: {fileID: 0}
 --- !u!4 &1509789505
 Transform:
   m_ObjectHideFlags: 0

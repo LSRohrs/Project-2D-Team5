@@ -108,6 +108,7 @@ public class ButtonScrip : MonoBehaviour
 
     public void OpenCredits()
     {
+        StoreLastScene();
         SceneManager.LoadScene("Credits");
     }
 
