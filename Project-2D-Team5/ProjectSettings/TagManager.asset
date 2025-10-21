@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Hazard
   - Key
+  - Door
   layers:
   - Default
   - TransparentFX

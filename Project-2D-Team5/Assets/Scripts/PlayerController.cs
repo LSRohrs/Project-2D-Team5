@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,13 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private bool grounded;
     private float horizontalInput;
+
+    //Key stuff
+    public GameObject KeyOn;
+    public GameObject Keyoff;
+    public GameObject KeySpot;
+    private int keyAmount;
+    public GameObject doorText;
 
     //audio
     public AudioClip jumpSFX;
@@ -56,23 +64,48 @@ public class PlayerController : MonoBehaviour
     {
         if (key.gameObject.tag == "Key")
         {
-            string currentScene = SceneManager.GetActiveScene().name;
+            keyAmount++;
+            KeySpot.SetActive(false);
 
-            if (currentScene == "Level One")
+            if (keyAmount == 1)
             {
-                SceneManager.LoadScene("Level Two");
+                KeyOn.SetActive(true);
+                Keyoff.SetActive(false);
             }
-            else if (currentScene == "Level Two")
+        }
+
+        if (key.gameObject.tag == "Door")
+        {
+            if (keyAmount >= 1)
             {
-                SceneManager.LoadScene("Win");
+                string currentScene = SceneManager.GetActiveScene().name;
+
+                if (currentScene == "Level One")
+                {
+                    SceneManager.LoadScene("Level Two");
+                }
+                else if (currentScene == "Level Two")
+                {
+                    SceneManager.LoadScene("Win");
+                }
+            }
+            else if (keyAmount == 0)
+            {
+                doorText.SetActive(true);
+                Invoke(nameof(doorTextdelay), 2.0f);
+
             }
         }
 
     }
 
-
     public bool canAttack()
     {
         return horizontalInput == 0 && grounded;
+    }
+
+    void doorTextdelay()
+    {
+        doorText.SetActive(false);
     }
 }
