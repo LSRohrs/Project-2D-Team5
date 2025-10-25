@@ -82,10 +82,29 @@ public class PlayerHealth : MonoBehaviour
             touchingHazard = false;
             damageTimer = 0f;
         }
+        if (other.CompareTag("Heart"))
+        {
+            if (currentHealth >= 3)
+            {
+                //nothing
+            }
+            if (currentHealth == 2)
+            {
+                heartThree.SetActive(true);
+                currentHealth++;
+                Destroy(other.gameObject);
+            }
+            if (currentHealth == 1)
+            {
+                heartTwo.SetActive(true);
+                currentHealth++;
+                Destroy(other.gameObject);
+            }
+        }
     }
     //-----------------------------------------------------------------------------------------------------------------------------/\
 
-    private void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
         currentHealth -= amount;
 
