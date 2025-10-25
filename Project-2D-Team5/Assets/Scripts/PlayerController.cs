@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -96,7 +97,6 @@ public class PlayerController : MonoBehaviour
 
             }
         }
-
     }
 
     public bool canAttack()
