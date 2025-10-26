@@ -42,8 +42,7 @@ public class PlayerAttacks : MonoBehaviour
     private void Attack()
     {
         anim.SetTrigger("attack");
-        audioSource.clip = swordSFX;
-        audioSource.Play();
+        audioSource.PlayOneShot(swordSFX);
         cooldownTimer = 0;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
@@ -69,8 +68,7 @@ public class PlayerAttacks : MonoBehaviour
     public void startBlock()
     {
         anim.SetBool("block", true);
-        audioSource.clip = shieldSFX;
-        audioSource.Play();
+        audioSource.PlayOneShot(shieldSFX);
         cooldownTimer = 0;
 
         blockIFrame = true;

@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     //audio
     public AudioClip jumpSFX;
+    public AudioClip keySFX;
     private AudioSource audioSource;
 
     private void Awake()
@@ -50,8 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         body.linearVelocity = new Vector2(body.linearVelocity.x, speed);
-        audioSource.clip = jumpSFX;
-        audioSource.Play();
+        audioSource.PlayOneShot(jumpSFX);
         grounded = false;
     }
 
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         if (key.gameObject.tag == "Key")
         {
             keyAmount++;
+            audioSource.PlayOneShot(keySFX);
             KeySpot.SetActive(false);
 
             if (keyAmount == 1)

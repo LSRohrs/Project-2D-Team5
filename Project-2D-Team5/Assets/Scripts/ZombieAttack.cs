@@ -38,8 +38,7 @@ public class ZombieAttack : MonoBehaviour
             {
                 cooldownTimer = 0;
                 anim.SetTrigger("MeleeAttack");
-                audioSource.clip = zombieAttackSFX;
-                audioSource.Play();
+                audioSource.PlayOneShot(zombieAttackSFX);
             }
         }
 

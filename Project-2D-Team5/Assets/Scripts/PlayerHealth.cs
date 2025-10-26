@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject heartTwo;
     public GameObject heartThree;
     public AudioClip playerhurtSFX;
+    public AudioClip heartGrabSFX;
 
     private AudioSource audioSource;
     private int currentHealth;
@@ -88,17 +89,19 @@ public class PlayerHealth : MonoBehaviour
             {
                 //nothing
             }
-            if (currentHealth == 2)
+            else if (currentHealth == 2)
             {
+                Destroy(other.gameObject);
                 heartThree.SetActive(true);
-                currentHealth++;
-                Destroy(other.gameObject);
+                currentHealth = 3;
+                audioSource.PlayOneShot(heartGrabSFX);
             }
-            if (currentHealth == 1)
+            else if (currentHealth == 1)
             {
-                heartTwo.SetActive(true);
-                currentHealth++;
                 Destroy(other.gameObject);
+                heartTwo.SetActive(true);
+                currentHealth = 2;
+                audioSource.PlayOneShot(heartGrabSFX);
             }
         }
     }
@@ -110,19 +113,16 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 2)
             heartThree.SetActive(false);
-        audioSource.clip = playerhurtSFX;
-        audioSource.Play();
+        audioSource.PlayOneShot(playerhurtSFX);
 
         if (currentHealth <= 1)
             heartTwo.SetActive(false);
-        audioSource.clip = playerhurtSFX;
-        audioSource.Play();
+        audioSource.PlayOneShot(playerhurtSFX);
 
         if (currentHealth <= 0)
         {
             heartOne.SetActive(false);
-            audioSource.clip = playerhurtSFX;
-            audioSource.Play();
+            audioSource.PlayOneShot(playerhurtSFX);
             Debug.Log("Player died!");
             //----------------------------------------------------------------------------------------------------------------------\/
             //Edited by Kai
