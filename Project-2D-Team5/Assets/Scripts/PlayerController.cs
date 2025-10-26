@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     //Key stuff
     public GameObject KeyOn;
-    public GameObject Keyoff;
+    //public GameObject Keyoff;
     public GameObject KeySpot;
     private int keyAmount;
     public GameObject doorText;
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
             if (keyAmount == 1)
             {
                 KeyOn.SetActive(true);
-                Keyoff.SetActive(false);
+                //Keyoff.SetActive(false);
             }
         }
 
