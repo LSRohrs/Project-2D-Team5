@@ -10,8 +10,8 @@ public class LanternFlickerPanel : MonoBehaviour
     private float minAlpha = 220f / 255f;
     private float maxAlpha = 240f / 255f;
 
-    public Vector2 flickerSpeedRange = new Vector2(0.05f, 0.2f);
-    public Vector2 flickerIntervalRange = new Vector2(0.02f, 0.1f);
+    private Vector2 flickerSpeedRange = new Vector2(1f, 2f);
+    private Vector2 flickerIntervalRange = new Vector2(0.5f, 1f);
 
     private void Start()
     {
