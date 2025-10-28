@@ -458,8 +458,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelImage: {fileID: 269141603}
-  flickerSpeedRange: {x: 0.1, y: 0.2}
-  flickerIntervalRange: {x: 0.02, y: 0.1}
 --- !u!1 &269141601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,8 +1147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelImage: {fileID: 1986377667}
-  flickerSpeedRange: {x: 0.1, y: 0.2}
-  flickerIntervalRange: {x: 0.02, y: 0.1}
 --- !u!1 &583835383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1478,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 55912fb81672cf74cac0d56037956dc7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ea400e75069f03419f867c5af5cdb74, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1974,7 +1970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5285948788877387369, guid: b221de5e97a839a4bb33cba2932adc1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7cd76ba02947f7446a1d8339b4d23ce4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
